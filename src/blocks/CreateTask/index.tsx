@@ -23,9 +23,16 @@ const CreateTaks = () => {
       >
         <hr />
         <Input
-          placeholder={''}
+          placeholder={'placeholer'}
           onChange={() => console.log('h')}
-          label={''}
+          label={'label'}
+          height="md"
+        />
+        <Input
+          placeholder={'placeholer'}
+          onChange={() => console.log('h')}
+          label={'label'}
+          height="lg"
         />
         <p>sdasd</p>
       </Modal>

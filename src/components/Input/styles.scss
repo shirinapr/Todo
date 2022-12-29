@@ -1,0 +1,22 @@
+.container {
+  margin: 18px 0;
+}
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: gray;
+  }
+}
+.label {
+  background-color: white;
+  color: gray;
+  padding: 0 4px;
+}

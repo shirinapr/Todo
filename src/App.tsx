@@ -1,7 +1,14 @@
-import { DatePicker } from 'antd';
+import React from 'react';
+import Header from './components/Header';
+import CreateTaks from './blocks/CreateTask';
 
 const App = () => {
-  return <DatePicker className="bg-red-100" />;
+  return (
+    <div>
+      <Header />
+      <CreateTaks />
+    </div>
+  );
 };
 
 export default App;

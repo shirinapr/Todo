@@ -12,7 +12,7 @@ const Input = ({ placeholder, onChange, label, height }: Props) => {
   return (
     <div>
       {height == 'md' ? (
-        <div className="container relative">
+        <div className="input-container relative">
           <label className="label absolute top-[-10px] left-[10px]">
             {label}
           </label>
@@ -25,7 +25,7 @@ const Input = ({ placeholder, onChange, label, height }: Props) => {
           />
         </div>
       ) : (
-        <div className="container relative">
+        <div className="input-container relative">
           <label className="label absolute top-[-10px] left-[10px]">
             {label}
           </label>

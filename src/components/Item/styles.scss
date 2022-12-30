@@ -1,24 +1,29 @@
 .container {
-  border: 1px solid gray;
-  border-radius: 1px;
   padding: 10px;
+  border-radius: 2px;
+  border: 1px solid gray;
+  &:hover {
+    background-color: rgb(235, 235, 235);
+    transition: background-color 1s;
+  }
 }
 .description {
   font-size: 18px;
 }
 .title {
-  font-weight: bold;
   font-size: 24px;
-}
-.Priority {
-  background-color: red;
-  font-size: 20px;
-  display: inline-flex;
-  gap: 10px;
+  font-weight: bold;
 }
 .circle {
+  content: '';
   width: 30px;
   height: 30px;
-  background-color: red;
   border-radius: 50%;
+}
+.priority {
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  justify-content: end;
+  align-items: center;
 }

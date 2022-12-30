@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
-import Form from './Form';
+import ModalContent from '../../components/ModalContent/Form';
 
 const CreateTaks = () => {
   const [modalopen, setModalopen] = useState(false);
@@ -13,8 +13,7 @@ const CreateTaks = () => {
     <div className="center h-[92vh]">
       <Button
         type="primary"
-        className="bg-blue-500         
-"
+        className="bg-blue-500"
         onClick={() => setModalopen(true)}
       >
         CREATE YOUR FIRST TASK
@@ -28,7 +27,7 @@ const CreateTaks = () => {
         footer={null}
       >
         <hr className="mb-4" />
-        <Form closeModal={ClsoeModal} />
+        <ModalContent closeModal={ClsoeModal} />
       </Modal>
     </div>
   );

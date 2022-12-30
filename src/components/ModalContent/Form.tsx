@@ -1,30 +1,27 @@
 import React from 'react';
 import { Button, Form, Radio } from 'antd';
-import Input from '../../components/Input';
-import { useTodoContext } from '../../Context/TodoProvider';
+import Input from '../Input';
+import { ITodo, useTodoContext } from '../../Context/TodoProvider';
+import { nanoid } from 'nanoid';
 
 type Props = {
   closeModal: () => void;
 };
 
-type FormValues = {
-  title: string;
-  description: string;
-  memo: string;
-  priority: string;
-};
-
 const FormComponent = ({ closeModal }: Props) => {
-  const { addTodo, todoList } = useTodoContext();
+  const { addTodo } = useTodoContext();
 
   const validateMessages = {
     required: '${label} is required!',
   };
 
-  const onFinish = (values: FormValues) => {
-    addTodo(values);
+  const onFinish = (values: ITodo) => {
+    addTodo({
+      ...values,
+      status: 'ongoing',
+      id: nanoid(),
+    });
   };
-  console.log(todoList);
 
   return (
     <Form
@@ -35,7 +32,7 @@ const FormComponent = ({ closeModal }: Props) => {
       <Form.Item name={['title']} rules={[{ required: true }]}>
         <Input
           placeholder="Enter Title"
-          onChange={() => console.log('h')}
+          onChange={() => {}}
           label="Task title"
           height="md"
         />
@@ -43,7 +40,7 @@ const FormComponent = ({ closeModal }: Props) => {
       <Form.Item name={['description']} rules={[{ required: true }]}>
         <Input
           placeholder="Enter Description"
-          onChange={() => console.log('h')}
+          onChange={() => {}}
           label="Task description"
           height="lg"
         />
@@ -51,7 +48,7 @@ const FormComponent = ({ closeModal }: Props) => {
       <Form.Item name={['memo']} rules={[{ required: true }]}>
         <Input
           placeholder="Enter what you like"
-          onChange={() => console.log('h')}
+          onChange={() => {}}
           label="Gift and KPI for this task ;) "
           height="md"
         />

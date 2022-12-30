@@ -1,13 +1,20 @@
 import React from 'react';
 import Header from './components/Header';
 import CreateTaks from './blocks/CreateTask';
+import Item from './components/Item';
+import TodoProvider from './Context/TodoProvider';
 
 const App = () => {
   return (
-    <div>
+    <TodoProvider>
       <Header />
       <CreateTaks />
-    </div>
+      {/* <Item
+        title={'sdfsdfa'}
+        description={'sdfasdf'}
+        priority={'asdfasd'}
+      /> */}
+    </TodoProvider>
   );
 };
 

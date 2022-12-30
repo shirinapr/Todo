@@ -29,9 +29,12 @@ const Input = ({ placeholder, onChange, label, height }: Props) => {
           <label className="label absolute top-[-10px] left-[10px]">
             {label}
           </label>
-          <textarea className="input" placeholder={placeholder}>
-            hey
-          </textarea>
+          <textarea
+            className="input"
+            rows={4}
+            placeholder={placeholder}
+            onChange={onChange}
+          />
         </div>
       )}
     </div>

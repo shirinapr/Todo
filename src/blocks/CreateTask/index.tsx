@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
-import Input from '../../components/Input';
+import Form from './Form';
 
 const CreateTaks = () => {
   const [modalopen, setModalopen] = useState(false);
+
+  const ClsoeModal = () => {
+    setModalopen(false);
+  };
+
   return (
     <div className="center h-[92vh]">
       <Button
@@ -14,27 +19,16 @@ const CreateTaks = () => {
       >
         CREATE YOUR FIRST TASK
       </Button>
+
       <Modal
         title="CREATE NEW TASK"
         centered
         open={modalopen}
-        onOk={() => setModalopen(false)}
-        onCancel={() => setModalopen(false)}
+        onCancel={ClsoeModal}
+        footer={null}
       >
-        <hr />
-        <Input
-          placeholder={'placeholer'}
-          onChange={() => console.log('h')}
-          label={'label'}
-          height="md"
-        />
-        <Input
-          placeholder={'placeholer'}
-          onChange={() => console.log('h')}
-          label={'label'}
-          height="lg"
-        />
-        <p>sdasd</p>
+        <hr className="mb-4" />
+        <Form closeModal={ClsoeModal} />
       </Modal>
     </div>
   );

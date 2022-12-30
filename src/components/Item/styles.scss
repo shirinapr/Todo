@@ -1,0 +1,24 @@
+.container {
+  border: 1px solid gray;
+  border-radius: 1px;
+  padding: 10px;
+}
+.description {
+  font-size: 18px;
+}
+.title {
+  font-weight: bold;
+  font-size: 24px;
+}
+.Priority {
+  background-color: red;
+  font-size: 20px;
+  display: inline-flex;
+  gap: 10px;
+}
+.circle {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+}

@@ -6,7 +6,7 @@ const Header = () => {
     <div className="center py-4 shadow-md">
       <Button
         type="primary"
-        className="bg-green-700 hover:bg-green-600 absolute lg:left-[150px] left-3 lg:w-[170px] w-[110px] text-[12px] lg:text-base center"
+        className="bg-green-700 hover:bg-green-800 absolute lg:left-[150px] left-3 lg:w-[170px] w-[110px] text-[12px] lg:text-base center"
       >
         VIEW DONE TASKS
       </Button>

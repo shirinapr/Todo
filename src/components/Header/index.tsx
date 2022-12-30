@@ -24,6 +24,10 @@ const Header = () => {
         open={modalopen}
         onCancel={ClsoeModal}
         footer={null}
+        bodyStyle={{
+          height: '400px',
+          overflow: 'auto',
+        }}
       >
         <hr className="mb-4" />
         <DoneTasks />

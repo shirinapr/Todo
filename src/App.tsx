@@ -1,16 +1,22 @@
 import React from 'react';
-import Header from './components/Header';
-import CreateTaks from './blocks/CreateTask';
-import Item from './components/Item';
+
 import TodoProvider from './Context/TodoProvider';
-import Tasks from './blocks/Tasks';
+import {
+  RouterProvider,
+  createBrowserRouter,
+} from 'react-router-dom';
+import Main from './Pages/main';
 
 const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Main />,
+    },
+  ]);
   return (
     <TodoProvider>
-      <Header />
-      <CreateTaks />
-      <Tasks />
+      <RouterProvider router={router} />
     </TodoProvider>
   );
 };

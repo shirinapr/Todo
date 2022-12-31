@@ -14,11 +14,13 @@ const TodoContext = createContext<{
   addTodo: (todo: ITodo) => void;
   removeTodo: (todo: string) => void;
   setDone: (todo: string) => void;
+  editTodo: (id: string, todo: ITodo) => void;
 }>({
   todoList: [],
   addTodo: () => {},
   removeTodo: () => {},
   setDone: () => {},
+  editTodo: () => {},
 });
 
 const TodoProvider = ({ children }: any) => {
@@ -30,23 +32,34 @@ const TodoProvider = ({ children }: any) => {
 
   const removeTodo = (id: string) => {
     const newList = [...todoList];
-    const number = (todo: ITodo) => todo.id === id;
-    const indexId = newList.findIndex(number);
-    newList.filter((_, index: number) => index !== indexId);
-    setTodoList(newList);
+    const indexId = newList.findIndex((x) => x.id === id);
+    const filteredList = newList.filter(
+      (_, index: number) => index !== indexId,
+    );
+    setTodoList(filteredList);
   };
 
   const setDone = (id: string) => {
     const newList = [...todoList];
-    const number = (todo: ITodo) => todo.id === id;
-    const indexId = newList.findIndex(number);
+    const indexId = newList.findIndex((x) => x.id === id);
     newList[indexId].status = 'done';
+    setTodoList(newList);
+  };
+
+  const editTodo = (id: string, newValues: ITodo) => {
+    const newList = [...todoList];
+    const indexId = newList.findIndex((x) => x.id === id);
+    newList[indexId] = {
+      ...newValues,
+      id,
+      status: newList[indexId].status,
+    };
     setTodoList(newList);
   };
 
   return (
     <TodoContext.Provider
-      value={{ todoList, addTodo, removeTodo, setDone }}
+      value={{ todoList, addTodo, removeTodo, setDone, editTodo }}
     >
       {children}
     </TodoContext.Provider>

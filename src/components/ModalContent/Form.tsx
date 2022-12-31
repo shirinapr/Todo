@@ -9,9 +9,11 @@ type Props = {
   onFinish: any;
   descriptionValue?: string;
   priorityValue?: string;
+  isEdit: boolean;
 };
 
 const FormComponent = ({
+  isEdit,
   onFinish,
   memoValue,
   titleValue,
@@ -79,7 +81,7 @@ const FormComponent = ({
             className="bg-blue-600"
             onClick={closeModal}
           >
-            CREATE NEW TASK
+            {isEdit ? 'Edit' : 'CREATE NEW TASK'}
           </Button>
         </Form.Item>
       </div>
@@ -88,6 +90,7 @@ const FormComponent = ({
 };
 
 FormComponent.defaultProps = {
+  isEdit: false,
   memoValue: '',
   titleValue: '',
   descriptionValue: '',

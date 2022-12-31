@@ -5,43 +5,49 @@ import { nanoid } from 'nanoid';
 import { Modal } from 'antd';
 import FormComponent from './Form';
 
-const EditForm = () => {
-  const { todoList, setDone, removeTodo } = useTodoContext();
+type Props = {
+  currentId: string;
+};
+const EditForm = ({ currentId }: Props) => {
+  const [modalopen, setModalopen] = useState(false);
+
+  const { todoList, setDone, removeTodo, editTodo } =
+    useTodoContext();
+
+  const Id = todoList.findIndex((x) => x.id === currentId);
 
   const handleEdit = () => {
     setModalopen(true);
   };
 
   const handleDelete = () => {
-    removeTodo(todoList[0].id);
+    removeTodo(todoList[Id].id);
   };
-  const [modalopen, setModalopen] = useState(false);
 
   const ClsoeModal = () => {
     setModalopen(false);
   };
 
   const onFinish = (values: ITodo) => {
-    console.log('hey');
+    editTodo(onGoingTodos[Id].id, values);
   };
 
   const onGoingTodos = todoList.filter(
     (todo) => todo.status === 'ongoing',
   );
-
   return (
     <div>
       <Item
         id={nanoid()}
-        title={onGoingTodos[0].title}
-        priority={onGoingTodos[0].priority}
-        description={onGoingTodos[0].description}
-        handleIsDone={() => setDone(onGoingTodos[0].id)}
-        handleDelete={handleDelete}
+        title={onGoingTodos[Id].title}
+        priority={onGoingTodos[Id].priority}
+        description={onGoingTodos[Id].description}
         handleEdit={handleEdit}
+        handleDelete={handleDelete}
+        handleIsDone={() => setDone(onGoingTodos[Id].id)}
       />
       <Modal
-        title="CREATE NEW TASK"
+        title="Edit task"
         centered
         footer={null}
         open={modalopen}
@@ -49,12 +55,13 @@ const EditForm = () => {
       >
         <hr className="mb-4" />
         <FormComponent
+          isEdit
           closeModal={ClsoeModal}
           onFinish={onFinish}
-          titleValue={onGoingTodos[0].title}
-          descriptionValue={onGoingTodos[0].description}
-          memoValue={onGoingTodos[0].memo}
-          priorityValue={onGoingTodos[0].priority}
+          titleValue={onGoingTodos[Id].title}
+          descriptionValue={onGoingTodos[Id].description}
+          memoValue={onGoingTodos[Id].memo}
+          priorityValue={onGoingTodos[Id].priority}
         />
       </Modal>
     </div>

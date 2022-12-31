@@ -3,12 +3,19 @@ import './styles.scss';
 
 type Props = {
   label: string;
+  height: 'md' | 'lg';
   placeholder: string;
   onChange: () => void;
-  height: 'md' | 'lg';
+  defaultValue?: string;
 };
 
-const Input = ({ placeholder, onChange, label, height }: Props) => {
+const Input = ({
+  label,
+  height,
+  onChange,
+  placeholder,
+  defaultValue,
+}: Props) => {
   return (
     <div>
       {height == 'md' ? (
@@ -21,6 +28,7 @@ const Input = ({ placeholder, onChange, label, height }: Props) => {
             type="text"
             placeholder={placeholder}
             onChange={onChange}
+            defaultValue={defaultValue}
             style={{ height: height === 'md' ? '50px' : '120px' }}
           />
         </div>
@@ -32,6 +40,7 @@ const Input = ({ placeholder, onChange, label, height }: Props) => {
           <textarea
             className="input"
             rows={4}
+            defaultValue={defaultValue}
             placeholder={placeholder}
             onChange={onChange}
           />
@@ -40,5 +49,7 @@ const Input = ({ placeholder, onChange, label, height }: Props) => {
     </div>
   );
 };
+
+Input.defaultProps = { defaultValue: '' };
 
 export default Input;

@@ -3,18 +3,26 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { Button, Modal } from 'antd';
 import Item from '../../components/Item';
-import { useTodoContext } from '../../Context/TodoProvider';
+import { ITodo, useTodoContext } from '../../Context/TodoProvider';
 import ModalContent from '../../components/ModalContent/Form';
 import EditForm from '../../components/ModalContent/EditForm';
 
 const Tasks = () => {
-  const { todoList, setDone } = useTodoContext();
+  const { todoList, setDone, addTodo } = useTodoContext();
   const [modalopen, setModalopen] = useState(false);
   const [modal2open, setModal2open] = useState(false);
 
   const ClsoeModal = () => {
     setModalopen(false);
     setModal2open(false);
+  };
+
+  const onFinish = (values: ITodo) => {
+    addTodo({
+      ...values,
+      status: 'ongoing',
+      id: nanoid(),
+    });
   };
 
   const onGoingTodos = todoList.filter(
@@ -49,7 +57,10 @@ const Tasks = () => {
             onCancel={ClsoeModal}
           >
             <hr className="mb-4" />
-            <ModalContent closeModal={ClsoeModal} />
+            <ModalContent
+              closeModal={ClsoeModal}
+              onFinish={onFinish}
+            />
           </Modal>
           <Modal
             title="Task Deatails"

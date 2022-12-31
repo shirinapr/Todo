@@ -2,11 +2,22 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import ModalContent from '../../components/ModalContent/Form';
 
-const CreateTaks = () => {
+import { ITodo, useTodoContext } from '../../Context/TodoProvider';
+import { nanoid } from 'nanoid';
+
+const CreateTask = () => {
   const [modalopen, setModalopen] = useState(false);
+  const { addTodo } = useTodoContext();
 
   const ClsoeModal = () => {
     setModalopen(false);
+  };
+  const onFinish = (values: ITodo) => {
+    addTodo({
+      ...values,
+      status: 'ongoing',
+      id: nanoid(),
+    });
   };
 
   return (
@@ -27,10 +38,10 @@ const CreateTaks = () => {
         footer={null}
       >
         <hr className="mb-4" />
-        <ModalContent closeModal={ClsoeModal} />
+        <ModalContent closeModal={ClsoeModal} onFinish={onFinish} />
       </Modal>
     </div>
   );
 };
 
-export default CreateTaks;
+export default CreateTask;

@@ -12,7 +12,7 @@ export interface ITodo {
 const TodoContext = createContext<{
   todoList: ITodo[];
   addTodo: (todo: ITodo) => void;
-  removeTodo: (todo: number) => void;
+  removeTodo: (todo: string) => void;
   setDone: (todo: string) => void;
 }>({
   todoList: [],
@@ -28,10 +28,11 @@ const TodoProvider = ({ children }: any) => {
     setTodoList([...todoList, newItem]);
   };
 
-  const removeTodo = (todoIndex: number) => {
-    const newList = todoList.filter(
-      (_, index: number) => index !== todoIndex,
-    );
+  const removeTodo = (id: string) => {
+    const newList = [...todoList];
+    const number = (todo: ITodo) => todo.id === id;
+    const indexId = newList.findIndex(number);
+    newList.filter((_, index: number) => index !== indexId);
     setTodoList(newList);
   };
 

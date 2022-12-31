@@ -1,15 +1,17 @@
 import React from 'react';
-import { Button, Form, Radio } from 'antd';
-import Input from '../Input';
+import { Form, Radio } from 'antd';
+
+import Input from '../../Input';
+import Button from '../../Button';
 
 type Props = {
+  onFinish: any;
+  isEdit: boolean;
   memoValue?: string;
   titleValue?: string;
-  closeModal: () => void;
-  onFinish: any;
-  descriptionValue?: string;
   priorityValue?: string;
-  isEdit: boolean;
+  closeModal: () => void;
+  descriptionValue?: string;
 };
 
 const FormComponent = ({
@@ -25,10 +27,16 @@ const FormComponent = ({
     required: '${label} is required!',
   };
 
+  const [form] = Form.useForm();
+
   return (
     <Form
+      form={form}
       name="nest-messages"
-      onFinish={onFinish}
+      onFinish={(e) => {
+        onFinish(e);
+        !isEdit && form.resetFields();
+      }}
       validateMessages={validateMessages}
     >
       <Form.Item name={['title']} rules={[{ required: true }]}>
@@ -70,9 +78,12 @@ const FormComponent = ({
       </Form.Item>
       <div className="inline-flex gap-2">
         <Form.Item>
-          <Button danger onClick={closeModal}>
-            CANCEL
-          </Button>
+          <Button
+            type="danger"
+            onClick={closeModal}
+            content="CANCEL"
+            className="bg-red-800"
+          />
         </Form.Item>
         <Form.Item>
           <Button
@@ -80,9 +91,8 @@ const FormComponent = ({
             htmlType="submit"
             className="bg-blue-600"
             onClick={closeModal}
-          >
-            {isEdit ? 'Edit' : 'CREATE NEW TASK'}
-          </Button>
+            content={isEdit ? 'Edit' : 'CREATE NEW TASK'}
+          />
         </Form.Item>
       </div>
     </Form>
@@ -93,7 +103,7 @@ FormComponent.defaultProps = {
   isEdit: false,
   memoValue: '',
   titleValue: '',
-  descriptionValue: '',
   priorityValue: '',
+  descriptionValue: '',
 };
 export default FormComponent;

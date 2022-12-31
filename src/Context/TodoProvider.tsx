@@ -2,25 +2,25 @@ import { createContext, useContext, useState } from 'react';
 
 export interface ITodo {
   id: string;
-  title: string;
-  description: string;
   memo: string;
+  title: string;
   priority: string;
+  description: string;
   status: 'done' | 'ongoing';
 }
 
 const TodoContext = createContext<{
   todoList: ITodo[];
   addTodo: (todo: ITodo) => void;
-  removeTodo: (todo: string) => void;
   setDone: (todo: string) => void;
+  removeTodo: (todo: string) => void;
   editTodo: (id: string, todo: ITodo) => void;
 }>({
   todoList: [],
   addTodo: () => {},
-  removeTodo: () => {},
   setDone: () => {},
   editTodo: () => {},
+  removeTodo: () => {},
 });
 
 const TodoProvider = ({ children }: any) => {

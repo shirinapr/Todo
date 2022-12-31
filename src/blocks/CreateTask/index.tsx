@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
-import ModalContent from '../../components/ModalContent/Form';
 
-import { ITodo, useTodoContext } from '../../Context/TodoProvider';
+import Button from '../../components/Button';
+import CreateTaskModal from '../../components/Modals/createTask';
+
 import { nanoid } from 'nanoid';
+import { ITodo, useTodoContext } from '../../Context/TodoProvider';
 
 const CreateTask = () => {
   const [modalopen, setModalopen] = useState(false);
@@ -12,11 +13,12 @@ const CreateTask = () => {
   const ClsoeModal = () => {
     setModalopen(false);
   };
+
   const onFinish = (values: ITodo) => {
     addTodo({
       ...values,
-      status: 'ongoing',
       id: nanoid(),
+      status: 'ongoing',
     });
   };
 
@@ -25,21 +27,15 @@ const CreateTask = () => {
       <Button
         type="primary"
         className="bg-blue-500"
+        content="CREATE YOUR FIRST TASK"
         onClick={() => setModalopen(true)}
-      >
-        CREATE YOUR FIRST TASK
-      </Button>
+      />
 
-      <Modal
-        title="CREATE NEW TASK"
-        centered
-        open={modalopen}
-        onCancel={ClsoeModal}
-        footer={null}
-      >
-        <hr className="mb-4" />
-        <ModalContent closeModal={ClsoeModal} onFinish={onFinish} />
-      </Modal>
+      <CreateTaskModal
+        onFinish={onFinish}
+        openModal={modalopen}
+        closeModal={ClsoeModal}
+      />
     </div>
   );
 };

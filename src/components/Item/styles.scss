@@ -8,10 +8,10 @@
   }
 }
 .description {
+  width: 200px;
   font-size: 18px;
-  width: 60%;
-  background-color: 50%;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 .title {
   font-size: 24px;

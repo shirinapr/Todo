@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import Item from '../Item/secondary';
-import { ITodo, useTodoContext } from '../../Context/TodoProvider';
+
+import Item from '../../Item/secondary';
+import { ITodo, useTodoContext } from '../../../Context/TodoProvider';
+
 import { nanoid } from 'nanoid';
 import { Modal } from 'antd';
 import FormComponent from './Form';

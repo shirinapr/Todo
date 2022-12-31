@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 
+import Item from '../../components/Item/primary';
+import Button from '../../components/Button';
+import CreateTask from '../../components/Modals/createTask';
+import TasksDetails from '../../components/Modals/tasksDetails';
+
 import { nanoid } from 'nanoid';
-import { Button, Modal } from 'antd';
-import Item from '../../components/Item';
 import { ITodo, useTodoContext } from '../../Context/TodoProvider';
-import Form from '../../components/ModalContent/Form';
-import EditForm from '../../components/ModalContent/EditForm';
 
 const Tasks = () => {
-  const { todoList, setDone, addTodo } = useTodoContext();
   const [modalopen, setModalopen] = useState(false);
   const [modal2open, setModal2open] = useState(false);
   const [currentId, setCurrentId] = useState('');
 
-  const ClsoeModal = () => {
-    setModalopen(false);
-    setModal2open(false);
-  };
+  const { todoList, setDone, addTodo } = useTodoContext();
+
+  const onGoingTodos = todoList.filter(
+    (todo) => todo.status === 'ongoing',
+  );
 
   const openEditModal = (id: string) => {
     setCurrentId(id);
@@ -24,6 +25,7 @@ const Tasks = () => {
       setModal2open(true);
     }, 50);
   };
+
   const onFinish = (values: ITodo) => {
     addTodo({
       ...values,
@@ -32,9 +34,10 @@ const Tasks = () => {
     });
   };
 
-  const onGoingTodos = todoList.filter(
-    (todo) => todo.status === 'ongoing',
-  );
+  const modalClose = () => {
+    setModalopen(false);
+    setModal2open(false);
+  };
 
   return (
     <>
@@ -47,37 +50,30 @@ const Tasks = () => {
             description={todo.description}
             handleIsDone={() => setDone(todo.id)}
             onClick={() => openEditModal(todo.id)}
+            handleEdit={() => openEditModal(todo.id)}
           />
         </div>
       ))}
+
       <Button
         type="primary"
         className="bg-blue-600 absolute bottom-4 right-4"
         shape="circle"
         onClick={() => setModalopen(true)}
-      >
-        +
-      </Button>
-      <Modal
-        title="CREATE NEW TASK"
-        centered
-        footer={null}
-        open={modalopen}
-        onCancel={ClsoeModal}
-      >
-        <hr className="mb-4" />
-        <Form closeModal={ClsoeModal} onFinish={onFinish} />
-      </Modal>
-      <Modal
-        title="Task Details"
-        centered
-        footer={null}
-        open={modal2open}
-        onCancel={ClsoeModal}
-      >
-        <hr className="mb-4" />
-        <EditForm currentId={currentId} />
-      </Modal>
+        content="+"
+      />
+
+      <CreateTask
+        openModal={modalopen}
+        closeModal={modalClose}
+        onFinish={onFinish}
+      />
+
+      <TasksDetails
+        currentId={currentId}
+        openModal={modal2open}
+        closeModal={modalClose}
+      />
     </>
   );
 };

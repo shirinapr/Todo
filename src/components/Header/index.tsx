@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
-import DoneTasks from '../ModalContent/DoneTasks';
+
+import Button from '../Button';
+import DoneTasks from '../Modals/doneTasks';
 
 const Header = () => {
   const [modalopen, setModalopen] = useState(false);
 
-  const ClsoeModal = () => {
+  const closeModal = () => {
     setModalopen(false);
   };
 
@@ -13,26 +14,13 @@ const Header = () => {
     <div className="center py-4 shadow-md">
       <Button
         type="primary"
+        content="VIEW DONE TASKS"
         onClick={() => setModalopen(true)}
         className="bg-green-700 hover:bg-green-800 absolute lg:left-[150px] left-3 lg:w-[170px] w-[110px] text-[12px] lg:text-base center"
-      >
-        VIEW DONE TASKS
-      </Button>
-      <Modal
-        title="CREATE NEW TASK"
-        centered
-        open={modalopen}
-        onCancel={ClsoeModal}
-        footer={null}
-        bodyStyle={{
-          height: '400px',
-          overflow: 'auto',
-        }}
-      >
-        <hr className="mb-4" />
-        <DoneTasks />
-      </Modal>
+      />
       <p className="lg:text-2xl text-lg">Todo App</p>
+
+      <DoneTasks openModal={modalopen} closeModal={closeModal} />
     </div>
   );
 };

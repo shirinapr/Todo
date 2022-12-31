@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.scss';
-import { Button } from 'antd';
+import Button from '../Button';
 
 type Props = {
   id: string;
@@ -9,6 +9,7 @@ type Props = {
   description: string;
   hasButtons?: boolean;
   onClick?: () => void;
+  handleEdit: () => void;
   handleIsDone: () => void;
 };
 
@@ -18,15 +19,12 @@ const Item = ({
   onClick,
   priority,
   hasButtons,
+  handleEdit,
   description,
   handleIsDone,
 }: Props) => {
   return (
-    <div
-      className="center my-4"
-      onClick={onClick}
-      style={{ cursor: onClick && 'pointer' }}
-    >
+    <div onClick={onClick} className="center my-4 lg:mx-20 mx-5">
       <div className="container flex justify-between items-center">
         <div>
           <p className="title">{title}</p>
@@ -52,19 +50,18 @@ const Item = ({
               <span>
                 <Button
                   type="primary"
-                  className="bg-green-700 hover:bg-green-800 mx-1"
+                  content="DONE TASK"
                   onClick={handleIsDone}
-                >
-                  DONE TASK
-                </Button>
+                  className="bg-green-700 hover:bg-green-800 mx-1"
+                />
               </span>
               <span>
                 <Button
                   type="primary"
+                  content="EDIT TASK"
+                  onClick={handleEdit}
                   className="bg-blue-500 hover:bg-blue-600"
-                >
-                  EDIT TASK
-                </Button>
+                />
               </span>
             </div>
           )}

@@ -3,7 +3,8 @@ import { Button } from 'antd';
 
 type Props = {
   content: string;
-  className: string;
+  danger?: boolean;
+  className?: string;
   onClick?: () => void;
   shape?: 'circle' | 'round' | 'default';
   htmlType?: 'button' | 'submit' | 'reset';
@@ -14,11 +15,12 @@ type Props = {
     | 'default'
     | 'primary'
     | 'dashed'
-    | any;
+    | undefined;
 };
 const ButtonComponent = ({
   type,
   shape,
+  danger,
   content,
   htmlType,
   className,
@@ -28,6 +30,7 @@ const ButtonComponent = ({
     <Button
       type={type}
       shape={shape}
+      danger={danger}
       onClick={onClick}
       className={className}
       htmlType={htmlType}
@@ -37,6 +40,8 @@ const ButtonComponent = ({
   );
 };
 ButtonComponent.defaultProps = {
+  danger: false,
+  className: '',
   type: 'primary',
   shape: 'default',
   htmlType: 'button',

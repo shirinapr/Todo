@@ -74,7 +74,7 @@ const Tasks = () => {
 
       <Button
         type="primary"
-        className="bg-blue-600 absolute bottom-4 right-4 w-10 h-10"
+        className="bg-blue-600 fixed bottom-4 right-4 w-10 h-10"
         shape="circle"
         onClick={() => setCreateModal(true)}
         content="+"

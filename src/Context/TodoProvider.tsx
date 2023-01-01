@@ -1,4 +1,9 @@
-import { createContext, useContext, useState } from 'react';
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+} from 'react';
 
 export interface ITodo {
   id: string;
@@ -23,7 +28,7 @@ const TodoContext = createContext<{
   removeTodo: () => {},
 });
 
-const TodoProvider = ({ children }: any) => {
+const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [todoList, setTodoList] = useState<ITodo[]>([]);
 
   const addTodo = (newItem: ITodo) => {

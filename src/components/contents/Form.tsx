@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Radio } from 'antd';
 
 import Input from '../Input';
 import Button from '../Button';
 
 type Props = {
-  onFinish: any;
   isEdit: boolean;
   memoValue?: string;
   titleValue?: string;
   priorityValue?: string;
   closeModal: () => void;
   descriptionValue?: string;
+  onFinish: (values: any) => void;
 };
 
 const FormComponent = ({
@@ -20,8 +20,8 @@ const FormComponent = ({
   memoValue,
   titleValue,
   closeModal,
-  descriptionValue,
   priorityValue,
+  descriptionValue,
 }: Props) => {
   const validateMessages = {
     required: '${label} is required!',
@@ -42,9 +42,12 @@ const FormComponent = ({
       name="nest-messages"
       onFinish={onCheck}
       validateMessages={validateMessages}
-      initialValues={{ name: 'hey' }}
     >
-      <Form.Item name={'title'} rules={[{ required: true }]}>
+      <Form.Item
+        name={'title'}
+        rules={[{ required: true }]}
+        initialValue={titleValue}
+      >
         <Input
           placeholder="Enter Title"
           onChange={() => {}}
@@ -53,7 +56,11 @@ const FormComponent = ({
           defaultValue={titleValue}
         />
       </Form.Item>
-      <Form.Item name={'description'} rules={[{ required: true }]}>
+      <Form.Item
+        name={'description'}
+        rules={[{ required: true }]}
+        initialValue={descriptionValue}
+      >
         <Input
           placeholder="Enter Description"
           onChange={() => {}}
@@ -62,7 +69,11 @@ const FormComponent = ({
           defaultValue={descriptionValue}
         />
       </Form.Item>
-      <Form.Item name={'memo'} rules={[{ required: true }]}>
+      <Form.Item
+        name={'memo'}
+        rules={[{ required: true }]}
+        initialValue={memoValue}
+      >
         <Input
           placeholder="Enter what you like"
           onChange={() => {}}
@@ -71,11 +82,12 @@ const FormComponent = ({
           defaultValue={memoValue}
         />
       </Form.Item>
-      <Form.Item name={'priority'} rules={[{ required: true }]}>
-        <Radio.Group
-          className="flex justify-between items-center"
-          defaultValue={priorityValue}
-        >
+      <Form.Item
+        name={'priority'}
+        rules={[{ required: true }]}
+        initialValue={priorityValue}
+      >
+        <Radio.Group className="flex justify-between items-center">
           <Radio value="low"> Low </Radio>
           <Radio value="medium"> Medium </Radio>
           <Radio value="high"> High </Radio>
@@ -83,12 +95,7 @@ const FormComponent = ({
       </Form.Item>
       <div className="inline-flex gap-2">
         <Form.Item>
-          <Button
-            type="danger"
-            onClick={closeModal}
-            content="CANCEL"
-            className="hover:bg-gray-200 border-red-500 text-red-500"
-          />
+          <Button danger onClick={closeModal} content="CANCEL" />
         </Form.Item>
         <Form.Item>
           <Button

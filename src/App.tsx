@@ -1,22 +1,12 @@
 import React from 'react';
 
-import TodoProvider from './Context/TodoProvider';
-import {
-  RouterProvider,
-  createBrowserRouter,
-} from 'react-router-dom';
 import Main from './Pages/main';
+import TodoProvider from './Context/TodoProvider';
 
 const App = () => {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Main />,
-    },
-  ]);
   return (
     <TodoProvider>
-      <RouterProvider router={router} />
+      <Main />
     </TodoProvider>
   );
 };

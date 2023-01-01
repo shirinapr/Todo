@@ -1,6 +1,8 @@
 import React from 'react';
-import './styles.scss';
+
 import { Button } from 'antd';
+
+import './styles.scss';
 
 type Props = {
   id: string;
@@ -8,9 +10,9 @@ type Props = {
   priority: string;
   description: string;
   onClick?: () => void;
-  handleIsDone: () => void;
-  handleDelete: () => void;
   handleEdit: () => void;
+  handleIsDone: () => void;
+  handleDelete?: () => void;
 };
 
 const Item = ({
@@ -31,33 +33,32 @@ const Item = ({
         </div>
         <p>Description:</p>
         <p>{description}</p>
-        <div className="flex justify-between items-center mt-2">
+        <div className="flex justify-between items-center mt-2 gap-1">
           <span>
             <Button
               type="primary"
               onClick={handleEdit}
-              className="bg-blue-500 hover:bg-blue-600"
+              className="bg-blue-500 hover:bg-blue-600 w-[90px] "
             >
-              EDIT TASK
+              EDIT
             </Button>
           </span>
           <span>
             <Button
               type="primary"
-              className="bg-green-700 hover:bg-green-800 mx-1"
+              className="bg-green-700 hover:bg-green-800 w-[90px]"
               onClick={handleIsDone}
             >
-              DONE TASK
+              DONE
             </Button>
           </span>
-
           <span>
             <Button
               type="primary"
-              className="bg-red-500 hover:bg-red-600"
+              className="bg-red-500 hover:bg-red-600 w-[90px]"
               onClick={handleDelete}
             >
-              DELETE TASK
+              DELETE
             </Button>
           </span>
         </div>
@@ -65,6 +66,6 @@ const Item = ({
     </div>
   );
 };
-Item.defaultProps = { onClick: () => {} };
+Item.defaultProps = { onClick: () => {}, handleDelete: () => {} };
 
 export default Item;

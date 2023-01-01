@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Tasks from '../blocks/Tasks';
-import Header from '../components/Header';
+import Header from '../blocks/Header';
 import CreateTask from '../blocks/CreateTask';
 import { useTodoContext } from '../Context/TodoProvider';
 

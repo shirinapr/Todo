@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, Radio } from 'antd';
 
-import Input from '../../Input';
-import Button from '../../Button';
+import Input from '../Input';
+import Button from '../Button';
 
 type Props = {
   onFinish: any;
@@ -29,14 +29,18 @@ const FormComponent = ({
 
   const [form] = Form.useForm();
 
+  const onCheck = async () => {
+    const values = await form.validateFields();
+    onFinish(values);
+    !isEdit && form.resetFields();
+    closeModal();
+  };
+
   return (
     <Form
       form={form}
       name="nest-messages"
-      onFinish={(e) => {
-        onFinish(e);
-        !isEdit && form.resetFields();
-      }}
+      onFinish={onCheck}
       validateMessages={validateMessages}
     >
       <Form.Item name={['title']} rules={[{ required: true }]}>
@@ -82,7 +86,7 @@ const FormComponent = ({
             type="danger"
             onClick={closeModal}
             content="CANCEL"
-            className="bg-red-800"
+            className="hover:bg-gray-200 border-red-500 text-red-500"
           />
         </Form.Item>
         <Form.Item>
@@ -90,7 +94,6 @@ const FormComponent = ({
             type="primary"
             htmlType="submit"
             className="bg-blue-600"
-            onClick={closeModal}
             content={isEdit ? 'Edit' : 'CREATE NEW TASK'}
           />
         </Form.Item>

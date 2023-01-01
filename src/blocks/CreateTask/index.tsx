@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Button from '../../components/Button';
-import CreateTaskModal from '../../components/Modals/createTask';
+import CreateTaskModal from '../Modals/CreateTask';
 
 import { nanoid } from 'nanoid';
 import { ITodo, useTodoContext } from '../../Context/TodoProvider';
@@ -9,10 +9,6 @@ import { ITodo, useTodoContext } from '../../Context/TodoProvider';
 const CreateTask = () => {
   const [modalopen, setModalopen] = useState(false);
   const { addTodo } = useTodoContext();
-
-  const ClsoeModal = () => {
-    setModalopen(false);
-  };
 
   const onFinish = (values: ITodo) => {
     addTodo({
@@ -34,7 +30,7 @@ const CreateTask = () => {
       <CreateTaskModal
         onFinish={onFinish}
         openModal={modalopen}
-        closeModal={ClsoeModal}
+        closeModal={() => setModalopen(false)}
       />
     </div>
   );

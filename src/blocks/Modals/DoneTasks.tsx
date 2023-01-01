@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'antd';
 
-import DoneTasksContent from './contents/DoneTasks';
+import DoneTasksContent from '../../components/contents/DoneTasks';
 
 type Props = {
   openModal: boolean;

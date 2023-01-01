@@ -1,6 +1,7 @@
 import React from 'react';
+
 import './styles.scss';
-import Button from '../Button';
+import Button from '../../Button';
 
 type Props = {
   id: string;
@@ -24,7 +25,10 @@ const Item = ({
   handleIsDone,
 }: Props) => {
   return (
-    <div onClick={onClick} className="center my-4 lg:mx-20 mx-5">
+    <div
+      onClick={onClick}
+      className="center my-4 lg:mx-20 mx-5 cursor-pointer"
+    >
       <div className="container flex justify-between items-center">
         <div>
           <p className="title">{title}</p>
@@ -46,13 +50,13 @@ const Item = ({
             />
           </p>
           {hasButtons && (
-            <div className="py-2">
+            <div className="py-2 flex lg:gap-2 gap-1">
               <span>
                 <Button
                   type="primary"
                   content="DONE TASK"
                   onClick={handleIsDone}
-                  className="bg-green-700 hover:bg-green-800 mx-1"
+                  className="bg-green-700 hover:bg-green-800"
                 />
               </span>
               <span>

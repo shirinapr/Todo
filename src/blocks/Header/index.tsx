@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Button from '../Button';
-import DoneTasks from '../Modals/doneTasks';
+import DoneTasks from '../Modals/DoneTasks';
+import Button from '../../components/Button';
 
 const Header = () => {
   const [modalopen, setModalopen] = useState(false);

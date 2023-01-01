@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'antd';
 
-import Form from './contents/Form';
+import Form from '../../components/contents/Form';
 import { ITodo } from '../../Context/TodoProvider';
 
 type Props = {

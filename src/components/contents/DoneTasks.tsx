@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Item from '../../Item/primary';
+import Item from '../Item';
 
-import { nanoid } from 'nanoid';
-import { useTodoContext } from '../../../Context/TodoProvider';
+import { useTodoContext } from '../../Context/TodoProvider';
 
 const DoneTasks = () => {
   const { todoList, setDone } = useTodoContext();
@@ -18,12 +17,13 @@ const DoneTasks = () => {
           .map((todo, i) => (
             <div key={i}>
               <Item
-                id={nanoid()}
+                type="primary"
+                id={todo.id}
+                hasButtons={false}
                 title={todo.title}
                 description={todo.description}
                 priority={todo.priority}
                 handleIsDone={() => setDone(todo.id)}
-                hasButtons={false}
                 handleEdit={() => console.log('hey')}
               />
             </div>

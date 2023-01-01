@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import Item from '../../components/Item/primary';
 import Button from '../../components/Button';
-import CreateTask from '../../components/Modals/createTask';
-import TasksDetails from '../../components/Modals/tasksDetails';
+import CreateTask from '../Modals/CreateTask';
+import Item from '../../components/Item';
+import TasksDetails from '../Modals/TasksDetails';
 
 import { nanoid } from 'nanoid';
 import { ITodo, useTodoContext } from '../../Context/TodoProvider';
@@ -44,6 +44,7 @@ const Tasks = () => {
       {onGoingTodos.map((todo, i) => (
         <div key={i}>
           <Item
+            type="primary"
             id={todo.id}
             title={todo.title}
             priority={todo.priority}
@@ -57,7 +58,7 @@ const Tasks = () => {
 
       <Button
         type="primary"
-        className="bg-blue-600 absolute bottom-4 right-4"
+        className="bg-blue-600 absolute bottom-4 right-4 w-10 h-10"
         shape="circle"
         onClick={() => setModalopen(true)}
         content="+"

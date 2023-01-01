@@ -4,7 +4,7 @@ import { Button } from 'antd';
 type Props = {
   content: string;
   className: string;
-  onClick: () => void;
+  onClick?: () => void;
   shape?: 'circle' | 'round' | 'default';
   htmlType?: 'button' | 'submit' | 'reset';
   type?:
@@ -40,6 +40,7 @@ ButtonComponent.defaultProps = {
   type: 'primary',
   shape: 'default',
   htmlType: 'button',
+  onClick: () => {},
 };
 
 export default ButtonComponent;

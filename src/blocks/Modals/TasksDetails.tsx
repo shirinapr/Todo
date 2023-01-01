@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'antd';
 
-import EditForm from './contents/EditForm';
+import EditForm from '../../components/contents/EditForm';
 
 type Props = {
   currentId: string;
@@ -24,7 +24,10 @@ const TasksDetails = ({
       onCancel={closeModal}
     >
       <hr className="mb-4" />
-      <EditForm currentId={currentId} />
+      <EditForm
+        currentId={currentId}
+        closeDetailsModal={closeModal}
+      />
     </Modal>
   );
 };

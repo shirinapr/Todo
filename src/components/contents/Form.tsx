@@ -42,8 +42,9 @@ const FormComponent = ({
       name="nest-messages"
       onFinish={onCheck}
       validateMessages={validateMessages}
+      initialValues={{ name: 'hey' }}
     >
-      <Form.Item name={['title']} rules={[{ required: true }]}>
+      <Form.Item name={'title'} rules={[{ required: true }]}>
         <Input
           placeholder="Enter Title"
           onChange={() => {}}
@@ -52,7 +53,7 @@ const FormComponent = ({
           defaultValue={titleValue}
         />
       </Form.Item>
-      <Form.Item name={['description']} rules={[{ required: true }]}>
+      <Form.Item name={'description'} rules={[{ required: true }]}>
         <Input
           placeholder="Enter Description"
           onChange={() => {}}
@@ -61,7 +62,7 @@ const FormComponent = ({
           defaultValue={descriptionValue}
         />
       </Form.Item>
-      <Form.Item name={['memo']} rules={[{ required: true }]}>
+      <Form.Item name={'memo'} rules={[{ required: true }]}>
         <Input
           placeholder="Enter what you like"
           onChange={() => {}}
@@ -70,7 +71,7 @@ const FormComponent = ({
           defaultValue={memoValue}
         />
       </Form.Item>
-      <Form.Item name={['priority']} rules={[{ required: true }]}>
+      <Form.Item name={'priority'} rules={[{ required: true }]}>
         <Radio.Group
           className="flex justify-between items-center"
           defaultValue={priorityValue}

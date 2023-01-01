@@ -3,16 +3,17 @@ import Primary from './models/primary';
 import Secondary from './models/secondary';
 
 type Props = {
-  type: 'primary' | 'secondary';
   id: string;
   title: string;
   priority: string;
+  minimized?: boolean;
   description: string;
   hasButtons?: boolean;
   onClick?: () => void;
   handleEdit: () => void;
   handleIsDone: () => void;
   handleDelete?: () => void;
+  type: 'primary' | 'secondary';
 };
 const Item = ({
   type,
@@ -20,6 +21,7 @@ const Item = ({
   title,
   onClick,
   priority,
+  minimized,
   hasButtons,
   handleEdit,
   description,
@@ -33,6 +35,7 @@ const Item = ({
           id={id}
           title={title}
           priority={priority}
+          minimized={minimized}
           handleEdit={handleEdit}
           description={description}
           handleIsDone={handleIsDone}
@@ -56,6 +59,7 @@ const Item = ({
 
 Item.defaultProps = {
   hasButtons: true,
+  minimized: false,
   onClick: () => {},
   handleDelete: () => {},
 };

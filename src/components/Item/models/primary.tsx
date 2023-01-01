@@ -8,6 +8,7 @@ type Props = {
   title: string;
   priority: string;
   description: string;
+  minimized?: boolean;
   hasButtons?: boolean;
   onClick?: () => void;
   handleEdit: () => void;
@@ -19,6 +20,7 @@ const Item = ({
   title,
   onClick,
   priority,
+  minimized,
   hasButtons,
   handleEdit,
   description,
@@ -26,13 +28,20 @@ const Item = ({
 }: Props) => {
   return (
     <div
-      onClick={onClick}
-      className="center my-4 lg:mx-20 mx-5 cursor-pointer"
+      className={`${
+        minimized ? 'mx-4' : 'lg:mx-[150px] mx-5'
+      } center my-4 cursor-pointer`}
     >
       <div className="container flex justify-between items-center">
-        <div>
+        <div onClick={onClick}>
           <p className="title">{title}</p>
-          <p className="description my-2">{description}</p>
+          <p
+            className={`${
+              minimized ? 'mindecription' : 'description'
+            } my-2`}
+          >
+            {description}
+          </p>
         </div>
         <div className="flex flex-col">
           <p className="priority">
@@ -74,6 +83,10 @@ const Item = ({
     </div>
   );
 };
-Item.defaultProps = { hasButtons: true, onClick: () => {} };
+Item.defaultProps = {
+  hasButtons: true,
+  onClick: () => {},
+  minimized: false,
+};
 
 export default Item;

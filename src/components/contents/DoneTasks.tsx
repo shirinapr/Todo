@@ -18,6 +18,7 @@ const DoneTasks = () => {
             <div key={i}>
               <Item
                 type="primary"
+                minimized
                 id={todo.id}
                 hasButtons={false}
                 title={todo.title}

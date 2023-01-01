@@ -8,14 +8,24 @@
   }
 }
 .description {
-  width: 300px;
+  width: 900px;
+  @media (max-width: 1290px) and (min-width: 670px) {
+    width: 400px;
+  }
+  @media (max-width: 670px) and (min-width: 515px) {
+    width: 250px;
+  }
+  @media (max-width: 515px) {
+    width: 100px;
+  }
+}
+
+.mindecription,
+.description {
   font-size: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 18px;
-  @media (max-width: 600px) {
-    width: 100px;
-  }
 }
 .title {
   font-size: 24px;

@@ -8,6 +8,7 @@ type Props = {
   memo: string;
   title: string;
   priority: string;
+  currentId?: string;
   openModal: boolean;
   description: string;
   closeModal: () => void;

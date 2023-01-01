@@ -1,4 +1,4 @@
-# Todo a work sample
+# Todo, a work sample
 
 in This Project I used the following stacks:
 React TypeScript.

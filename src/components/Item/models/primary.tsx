@@ -2,12 +2,10 @@ import React from 'react';
 
 import './styles.scss';
 import Button from '../../Button';
+import { ITodo } from '../../../Context/TodoProvider';
 
 type Props = {
-  id: string;
-  title: string;
-  priority: string;
-  description: string;
+  todo: ITodo;
   minimized?: boolean;
   hasButtons?: boolean;
   onClick?: () => void;
@@ -16,14 +14,11 @@ type Props = {
 };
 
 const Item = ({
-  id,
-  title,
+  todo,
   onClick,
-  priority,
   minimized,
   hasButtons,
   handleEdit,
-  description,
   handleIsDone,
 }: Props) => {
   return (
@@ -34,25 +29,25 @@ const Item = ({
     >
       <div className="container flex justify-between items-center">
         <div onClick={onClick}>
-          <p className="title">{title}</p>
+          <p className="title">{todo?.title}</p>
           <p
             className={`${
               minimized ? 'mindecription' : 'description'
             } my-2`}
           >
-            {description}
+            {todo?.description}
           </p>
         </div>
         <div className="flex flex-col">
           <p className="priority">
-            {priority}
+            {todo?.priority}
             <span
               className="circle center"
               style={{
                 backgroundColor:
-                  priority == 'medium'
+                  todo?.priority == 'medium'
                     ? 'orange'
-                    : priority == 'high'
+                    : todo?.priority == 'high'
                     ? 'red'
                     : 'green',
               }}

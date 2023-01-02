@@ -7,28 +7,25 @@ import { useTodoContext } from '../../Context/TodoProvider';
 const DoneTasks = () => {
   const { todoList, setDone } = useTodoContext();
 
+  const DoneTodos = todoList.filter((todo) => todo.status === 'done');
+
   return (
     <div>
-      {!todoList.length ? (
+      {!DoneTodos.length ? (
         <p className="center mt-20 text-xl">Empty</p>
       ) : (
-        todoList
-          .filter((todo) => todo.status === 'done')
-          .map((todo, i) => (
-            <div key={i}>
-              <Item
-                type="primary"
-                minimized
-                id={todo.id}
-                hasButtons={false}
-                title={todo.title}
-                description={todo.description}
-                priority={todo.priority}
-                handleIsDone={() => setDone(todo.id)}
-                handleEdit={() => console.log('hey')}
-              />
-            </div>
-          ))
+        DoneTodos.map((todo, i) => (
+          <div key={i}>
+            <Item
+              type="primary"
+              minimized
+              hasButtons={false}
+              todo={todo}
+              handleIsDone={() => setDone(todo.id)}
+              handleEdit={() => console.log('hey')}
+            />
+          </div>
+        ))
       )}
     </div>
   );

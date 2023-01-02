@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Modal } from 'antd';
 
-import EditForm from '../../components/contents/EditForm';
+import TodoActions from '../../components/contents/TodoActions';
 
 type Props = {
   currentId: string;
@@ -24,7 +24,7 @@ const TasksDetails = ({
       onCancel={closeModal}
     >
       <hr className="mb-4" />
-      <EditForm
+      <TodoActions
         currentId={currentId}
         closeDetailsModal={closeModal}
       />

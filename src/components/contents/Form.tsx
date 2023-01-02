@@ -1,27 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Form, Radio } from 'antd';
 
 import Input from '../Input';
 import Button from '../Button';
+import { ITodo } from '../../Context/TodoProvider';
 
 type Props = {
   isEdit: boolean;
-  memoValue?: string;
-  titleValue?: string;
-  priorityValue?: string;
+  todo?: ITodo;
   closeModal: () => void;
-  descriptionValue?: string;
   onFinish: (values: any) => void;
 };
 
 const FormComponent = ({
+  todo,
   isEdit,
   onFinish,
-  memoValue,
-  titleValue,
   closeModal,
-  priorityValue,
-  descriptionValue,
 }: Props) => {
   const validateMessages = {
     required: '${label} is required!',
@@ -44,48 +39,51 @@ const FormComponent = ({
       validateMessages={validateMessages}
     >
       <Form.Item
-        name={'title'}
+        name="title"
         rules={[{ required: true }]}
-        initialValue={titleValue}
+        initialValue={todo?.title}
       >
         <Input
           placeholder="Enter Title"
           onChange={() => {}}
           label="Task title"
           height="md"
-          defaultValue={titleValue}
+          defaultValue={todo?.title}
         />
       </Form.Item>
+
       <Form.Item
-        name={'description'}
+        name="description"
         rules={[{ required: true }]}
-        initialValue={descriptionValue}
+        initialValue={todo?.description}
       >
         <Input
           placeholder="Enter Description"
           onChange={() => {}}
           label="Task description"
           height="lg"
-          defaultValue={descriptionValue}
+          defaultValue={todo?.description}
         />
       </Form.Item>
+
       <Form.Item
-        name={'memo'}
+        name="target"
         rules={[{ required: true }]}
-        initialValue={memoValue}
+        initialValue={todo?.target}
       >
         <Input
           placeholder="Enter what you like"
           onChange={() => {}}
           label="Gift and KPI for this task ;) "
           height="md"
-          defaultValue={memoValue}
+          defaultValue={todo?.target}
         />
       </Form.Item>
+
       <Form.Item
-        name={'priority'}
+        name="priority"
         rules={[{ required: true }]}
-        initialValue={priorityValue}
+        initialValue={todo?.priority}
       >
         <Radio.Group className="flex justify-between items-center">
           <Radio value="low"> Low </Radio>
@@ -93,6 +91,7 @@ const FormComponent = ({
           <Radio value="high"> High </Radio>
         </Radio.Group>
       </Form.Item>
+
       <div className="inline-flex gap-2">
         <Form.Item>
           <Button danger onClick={closeModal} content="CANCEL" />
@@ -112,9 +111,5 @@ const FormComponent = ({
 
 FormComponent.defaultProps = {
   isEdit: false,
-  memoValue: '',
-  titleValue: '',
-  priorityValue: '',
-  descriptionValue: '',
 };
 export default FormComponent;

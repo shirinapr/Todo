@@ -7,7 +7,7 @@ import {
 
 export interface ITodo {
   id: string;
-  memo: string;
+  target: string;
   title: string;
   priority: string;
   description: string;

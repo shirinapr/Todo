@@ -22,10 +22,6 @@ const EditForm = ({ currentId, closeDetailsModal }: Props) => {
     setModalopen(true);
   };
 
-  const closeModal = () => {
-    setModalopen(false);
-  };
-
   const handleDelete = () => {
     closeDetailsModal();
     removeTodo(todoList[index].id);
@@ -45,22 +41,16 @@ const EditForm = ({ currentId, closeDetailsModal }: Props) => {
     <div>
       <Item
         type="secondary"
-        id={todoList[index].id}
-        title={todoList[index].title}
-        priority={todoList[index].priority}
-        description={todoList[index].description}
+        todo={todoList[index]}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
         handleIsDone={() => setDone(todoList[index].id)}
       />
       <EditFormModal
-        closeModal={closeModal}
+        closeModal={() => setModalopen(false)}
         openModal={modalopen}
         onFinish={onFinish}
-        title={todoList[index].title}
-        memo={todoList[index].memo}
-        description={todoList[index].description}
-        priority={todoList[index].priority}
+        todo={todoList[index]}
       />
     </div>
   );

@@ -9,6 +9,10 @@
 }
 .description {
   width: 900px;
+
+  @media (max-width: 4590px) and (min-width: 1290px) {
+    width: 500px;
+  }
   @media (max-width: 1290px) and (min-width: 670px) {
     width: 400px;
   }

@@ -61,10 +61,7 @@ const Tasks = () => {
         <div key={i}>
           <Item
             type="primary"
-            id={todo.id}
-            title={todo.title}
-            priority={todo.priority}
-            description={todo.description}
+            todo={todo}
             handleIsDone={() => setDone(todo.id)}
             onClick={() => openDetailModal(todo.id)}
             handleEdit={() => editForm(todo.id)}
@@ -97,10 +94,7 @@ const Tasks = () => {
           onFinish={onFinishEdit}
           closeModal={modalClose}
           openModal={editFormModal}
-          memo={todoList[index].memo}
-          title={todoList[index].title}
-          priority={todoList[index].priority}
-          description={todoList[index].description}
+          todo={todoList[index]}
         />
       )}
     </>

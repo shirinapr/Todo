@@ -5,12 +5,8 @@ import { ITodo } from '../../Context/TodoProvider';
 import FormComponent from '../../components/contents/Form';
 
 type Props = {
-  memo: string;
-  title: string;
-  priority: string;
-  currentId?: string;
+  todo: ITodo;
   openModal: boolean;
-  description: string;
   closeModal: () => void;
   onFinish: (values: ITodo) => void;
 };
@@ -18,10 +14,7 @@ const EditTask = ({
   openModal,
   closeModal,
   onFinish,
-  title,
-  description,
-  memo,
-  priority,
+  todo,
 }: Props) => {
   return (
     <Modal
@@ -36,10 +29,7 @@ const EditTask = ({
         isEdit
         closeModal={closeModal}
         onFinish={onFinish}
-        titleValue={title}
-        descriptionValue={description}
-        memoValue={memo}
-        priorityValue={priority}
+        todo={todo}
       />
     </Modal>
   );

@@ -3,12 +3,10 @@ import React from 'react';
 import { Button } from 'antd';
 
 import './styles.scss';
+import { ITodo } from '../../../Context/TodoProvider';
 
 type Props = {
-  id: string;
-  title: string;
-  priority: string;
-  description: string;
+  todo: ITodo;
   onClick?: () => void;
   handleEdit: () => void;
   handleIsDone: () => void;
@@ -16,23 +14,20 @@ type Props = {
 };
 
 const Item = ({
-  id,
-  title,
+  todo,
   onClick,
-  priority,
-  description,
+  handleEdit,
   handleIsDone,
   handleDelete,
-  handleEdit,
 }: Props) => {
   return (
     <div className="my-4" onClick={onClick}>
       <div>
         <div className="inline-flex">
-          <p>Title: {title}</p> (<p>{priority}</p>)
+          <p>Title: {todo?.title}</p> (<p>{todo?.priority}</p>)
         </div>
         <p>Description:</p>
-        <p>{description}</p>
+        <p>{todo?.description}</p>
         <div className="flex justify-between items-center mt-2 gap-1">
           <span>
             <Button

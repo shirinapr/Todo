@@ -1,13 +1,11 @@
 import React from 'react';
 import Primary from './models/primary';
 import Secondary from './models/secondary';
+import { ITodo } from '../../Context/TodoProvider';
 
 type Props = {
-  id: string;
-  title: string;
-  priority: string;
+  todo: ITodo;
   minimized?: boolean;
-  description: string;
   hasButtons?: boolean;
   onClick?: () => void;
   handleEdit: () => void;
@@ -17,14 +15,11 @@ type Props = {
 };
 const Item = ({
   type,
-  id,
-  title,
+  todo,
   onClick,
-  priority,
   minimized,
   hasButtons,
   handleEdit,
-  description,
   handleIsDone,
   handleDelete,
 }: Props) => {
@@ -32,23 +27,17 @@ const Item = ({
     <>
       {type === 'primary' ? (
         <Primary
-          id={id}
-          title={title}
-          priority={priority}
+          todo={todo}
           minimized={minimized}
           handleEdit={handleEdit}
-          description={description}
           handleIsDone={handleIsDone}
           hasButtons={hasButtons}
           onClick={onClick}
         />
       ) : (
         <Secondary
-          id={id}
-          title={title}
-          priority={priority}
+          todo={todo}
           handleEdit={handleEdit}
-          description={description}
           handleIsDone={handleIsDone}
           handleDelete={handleDelete}
         />

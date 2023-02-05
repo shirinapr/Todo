@@ -23,11 +23,13 @@ const Item = ({
   return (
     <div className="my-4" onClick={onClick}>
       <div>
-        <div className="inline-flex">
-          <p>Title: {todo?.title}</p> (<p>{todo?.priority}</p>)
+        <div className="inline-flex gap-1 items-center">
+          <p className="text-base">Title: </p>
+          {todo?.title}
+          <p className="font-bold">({todo?.priority})</p>
         </div>
-        <p>Description:</p>
-        <p>{todo?.description}</p>
+        <p className="text-base">Description:</p>
+        <p className="text-gray-500">{todo?.description}</p>
         <div className="flex justify-between items-center mt-2 gap-1">
           <span>
             <Button

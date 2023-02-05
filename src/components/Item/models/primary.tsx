@@ -60,7 +60,7 @@ const Item = ({
                   type="primary"
                   content="DONE TASK"
                   onClick={handleIsDone}
-                  className="bg-green-700 hover:bg-green-800"
+                  className="bg-green-700 hover:bg-green-800 lg:w-[100px] w-[80px] center"
                 />
               </span>
               <span>
@@ -68,7 +68,7 @@ const Item = ({
                   type="primary"
                   content="EDIT TASK"
                   onClick={handleEdit}
-                  className="bg-blue-500 hover:bg-blue-600"
+                  className="bg-blue-500 hover:bg-blue-600 lg:w-[100px] w-[80px] center"
                 />
               </span>
             </div>
